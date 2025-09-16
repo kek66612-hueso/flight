@@ -7,7 +7,7 @@ class DatabaseConfig:
                  host: str="", 
                  user:str = "", 
                  password:str = "",
-                 port:str=""):
+                 port:int="5432"):
         self.host=host,
         self.database=database,
         self.user=user,
@@ -16,10 +16,10 @@ class DatabaseConfig:
 
     def get_connection_params(self):
         return{
-            'host':self.host,
-            'database':self.database,
-            'user':self.user,
-            'password':self.password,
+            'host':self.host[0],
+            'database':self.database[0],
+            'user':self.user[0],
+            'password':self.password[0],
             'port':self.port
         }
     
@@ -32,6 +32,7 @@ class DatabaseConnection:
     
     def get_connection(self):
         if self._connection is None or self._connection.closed:
+            print(self.config.get_connection_params())
             self._connection = psycopg2.connect(**self.config.get_connection_params())
         return self._connection
 
