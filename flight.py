@@ -5,4 +5,4 @@ from typing import Optional
 class Flight:
     id: Optional[int] = None
     price: float = 0.0
-    plane: str = ""
+    chapman: str = ""

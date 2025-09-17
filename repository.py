@@ -3,13 +3,13 @@ from database import DatabaseConnection
 
 
 class FlightRepository:
-    '''Класс-репозиторий для доступа к БД'''
+
 
     def __init__(self,connection: DatabaseConnection):
         self.connection=connection
 
     def create_flight(self, flight:Flight):
-        """Добавление рейса"""
+
 
         conn = self.connection.get_connection()
         cursor = conn.cursor()
